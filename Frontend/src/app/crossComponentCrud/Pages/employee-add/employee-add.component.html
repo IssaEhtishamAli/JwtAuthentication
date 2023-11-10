@@ -1,0 +1,64 @@
+<div class="container-fluid">
+		<div class="card card-outline-primary">
+			<div class="card-header ">
+				<h3 class="mb-0 card-te">Employee Registration Form</h3>
+			</div>
+			<div class="card-body">
+				<form class="form" role="form" [formGroup]="empForm" (ngSubmit)="onSubmit()" autocomplete="off" id="loginForm" novalidate=""
+				 method="POST">
+					<div class="form-group">
+						<label>Name</label>
+						<input type="text" class="form-control" formControlName="emp_name"  id="pwd1">
+						<span class="text-danger"
+						*ngIf="(registerFormControl.emp_name.touched || submitted) && registerFormControl.emp_name.errors?.required">
+						Please enter valid name is required
+					</span>
+					</div>
+					<div class="form-group">
+						<label>Department Name</label>
+						<!-- <input type="text" class="form-control"   id="pwd2"> -->
+						<select class="form-control" formControlName="dept_id">
+							<option [ngValue]="dept._id" *ngFor="let dept of departments">{{dept.dept_name}}</option>
+						  </select>
+						<span class="text-danger"
+						*ngIf="(registerFormControl.dept_id.touched || submitted) && registerFormControl.dept_id.errors?.required">
+						Please enter valid department id
+					</span>
+					</div>
+					<div class="form-group">
+						<label>Employee Age</label>
+						<input type="text" class="form-control" formControlName="emp_age"  id="pwd2">
+						<span class="text-danger"
+						*ngIf="(registerFormControl.emp_age.touched || submitted) && registerFormControl.emp_age.errors?.required">
+						PLease enter age
+					</span>
+					</div>
+					<div class="form-group">
+						<label>Email:</label>
+						<input [class.is-invalid]="registerFormControl.emp_email.invalid && registerFormControl.emp_email.touched" type="email" class="form-control"
+						  formControlName="emp_email" />
+				  
+						<div *ngIf="(registerFormControl.emp_email.invalid && registerFormControl.emp_email.touched) || registerFormControl.emp_email.dirty">
+						  <small *ngIf="registerFormControl.emp_email.errors?.required" class="text-danger">Email is required</small>
+						  <!--question mark(?) is a safe navigation operator-->
+						  <small *ngIf="registerFormControl.emp_email.errors?.pattern" class="text-danger">Please provide a valid email address</small>
+						</div>
+				  
+					  </div>			  
+					<div class="form-group">
+						<label>Contact No.</label>
+						<input type="tel" class="form-control" formControlName="emp_contactno" id="pwd1">
+						<span class="text-danger"
+						*ngIf="(registerFormControl.emp_contactno.touched || submitted) && registerFormControl.emp_contactno.errors?.required">
+						Please enter valid contact no
+					</span>
+					</div>
+					<button type="submit" class="btn btn-success btn-lg" id="btnLogin">Add Employee</button>
+				</form>
+			</div>
+			<!--/card-body-->
+		</div>
+	<app-employee-view [update]="updateList" (onAdd)="addUser($event)"></app-employee-view>
+</div>
+
+

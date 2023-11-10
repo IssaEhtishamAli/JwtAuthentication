@@ -1,0 +1,26 @@
+<div class="col-md-6 offset-md-3 mt-5">
+    <div class="card">
+        <h4 class="card-header">User Login</h4>
+        <div class="card-body">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" formControlName="user_email" class="form-control" />
+                    <span class="text-danger" *ngIf="(LoginFormControl.user_email.touched || submitted) && LoginFormControl.user_email.errors?.required">
+                        Username is required
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" formControlName="user_password" class="form-control"/>
+                    <span class="text-danger" *ngIf="(LoginFormControl.user_password.touched || submitted) && LoginFormControl.user_password.errors?.required">
+                        Password is required
+                    </span>
+                </div>
+                <button [disabled]="loginForm.invalid" class="btn btn-primary mt-3">
+                    Login
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

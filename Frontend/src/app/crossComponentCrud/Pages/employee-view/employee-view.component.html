@@ -1,0 +1,27 @@
+<div class="container-fluid">
+      <table class="table table-striped thead-light table-hover">
+        <caption>Employee Details</caption>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Deparment Name</th>
+                <th>Email Address</th>
+                <th>Age</th>
+                <th>Contact No</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor = "let emp of empList; index as i">
+                <td> {{emp.emp_name}} </td>
+                <td>{{emp.dept_name}}</td>
+                <td> {{emp.emp_age}} </td>
+                <td> {{emp.emp_email}} </td>
+                <td> {{emp.emp_contactno}} </td>
+                <td><span class="fa fa-edit" style = "color:blue" (click)="editEmp(emp)"></span></td>
+                <td><span class="fa fa-trash" style = "color:red" (click)="removeEmp(emp._id)"></span></td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
